@@ -1,7 +1,10 @@
 package guru.springframework.controller;
 
+import org.springframework.stereotype.Controller;
+
 import guru.springframework.services.GreetingService;
 
+@Controller
 public class ConstructorInjectedController {
 	private GreetingService greetingService;
 	
@@ -9,7 +12,7 @@ public class ConstructorInjectedController {
 		this.greetingService = greetingService;
 	}
 	
-	String sayHello() {
+	public String sayHello() {
 		return greetingService.sayGreeting();
 	}
 
