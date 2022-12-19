@@ -15,6 +15,7 @@ public class DiDemoApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(DiDemoApplication.class, args);
 
+		//when creating a bean it will create the bean with the class name but with lower case first letter
 		MyController controller = (MyController) ctx.getBean("myController");
 
 		System.out.println("-----primary bean");
