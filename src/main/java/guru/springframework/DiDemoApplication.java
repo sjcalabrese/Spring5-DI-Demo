@@ -21,8 +21,11 @@ public class DiDemoApplication {
 		System.out.println("-----primary bean");
 
 		System.out.println(controller.hello());
+		System.out.println("-------property");
 		System.out.println(ctx.getBean(PropertyInjectedController.class).sayHello());
+		System.out.println("----------getter");
 		System.out.println(ctx.getBean(GetterInjectedController.class).sayHello());
+		System.out.println("----------constructor");
 		System.out.println(ctx.getBean(ConstructorInjectedController.class).sayHello());
 
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
