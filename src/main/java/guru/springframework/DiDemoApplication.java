@@ -5,14 +5,25 @@ import guru.springframework.datasource.FakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+//use component scan to allow you to check other package for spring components
+@ComponentScan(basePackages = {"guru.springframework", "com.springframework.pets"})
 @SpringBootApplication
 public class DiDemoApplication {
 
 	public static void main(String[] args) {
+		//by default spring boot will do component scan in the parent package the this
+		//is contained in. IE: guru.springframework package.
+		//if anything is placed outside of this package it will be missed.
+
 		ApplicationContext ctx = SpringApplication.run(DiDemoApplication.class, args);
 		//when creating a bean it will create the bean with the class name but with lower case first letter
 		MyController controller = (MyController) ctx.getBean("myController");
+
+		PetController petController = ctx.getBean("petController", PetController.class);
+		System.out.println("--- The Best Pet is ---");
+		System.out.println(petController.whichPetIsTheBest());
 
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 		System.out.println(i18nController.sayHello());
