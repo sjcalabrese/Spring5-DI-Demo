@@ -2,6 +2,8 @@ package guru.springframework;
 
 import guru.springframework.controllers.*;
 import guru.springframework.datasource.FakeDataSource;
+import guru.springframework.services.ProtoTypeBean;
+import guru.springframework.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -41,6 +43,18 @@ public class DiDemoApplication {
 		System.out.println(fakeDataSource.getUserName());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcUrl());
+
+		System.out.println("-----------Bean Scopes-------------");
+		SingletonBean singletonBean1 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean1.getMyScope());
+		SingletonBean singletonBean2 = ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean2.getMyScope());
+
+		ProtoTypeBean protoTypeBean1 = ctx.getBean(ProtoTypeBean.class);
+		System.out.println(protoTypeBean1.getMyScope());
+		ProtoTypeBean protoTypeBean2 = ctx.getBean(ProtoTypeBean.class);
+		System.out.println(protoTypeBean2.getMyScope());
+
 
 	}
 }
