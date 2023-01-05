@@ -1,0 +1,7 @@
+spring:
+    profiles:
+      active: dog,EN
+guru:
+  userName: YmlUserName
+  password: YmlpassWord
+  jdbcUrl: YmlURL
