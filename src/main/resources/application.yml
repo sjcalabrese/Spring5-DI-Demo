@@ -1,7 +1,22 @@
+#normally you should not use application.properties and application.yml in same application
+#it may have unexpected responses
 spring:
     profiles:
-      active: dog,EN
+      active:
+        -  dog
+        -  EN
+        -  prod
 guru:
   userName: YmlUserName
   password: YmlpassWord
   jdbcUrl: YmlURL
+
+  #can do multiple profiles by separating with 3 dashes
+
+---
+spring:
+  profiles: prod
+guru:
+  userName: ProdYmlUserName
+  password: ProdYmlpassWord
+  jdbcUrl: ProdYmlURL
