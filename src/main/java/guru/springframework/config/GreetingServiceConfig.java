@@ -46,13 +46,11 @@ public class GreetingServiceConfig {
     }
     //use @Value annotation to pull properties in from PropertySource
     @Bean
-    FakeDataSource fakeDataSource(@Value("${guru.userName}")String userName,
-                                  @Value("${guru.password}")String password,
-                                  @Value("${guru.jdbcUrl}")String jdbcUrl){
+    FakeDataSource fakeDataSource(SFGConfig sfgConfig){
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUserName(userName);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcUrl(jdbcUrl);
+        fakeDataSource.setUserName(sfgConfig.getUserName());
+        fakeDataSource.setPassword(sfgConfig.getPassword());
+        fakeDataSource.setJdbcUrl(sfgConfig.getJdbcUrl());
         return fakeDataSource;
     }
     @Bean

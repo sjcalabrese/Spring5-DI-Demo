@@ -1,5 +1,6 @@
 package guru.springframework;
 
+import guru.springframework.config.SFGConfig;
 import guru.springframework.controllers.*;
 import guru.springframework.datasource.FakeDataSource;
 import guru.springframework.services.ProtoTypeBean;
@@ -55,6 +56,11 @@ public class DiDemoApplication {
 		ProtoTypeBean protoTypeBean2 = ctx.getBean(ProtoTypeBean.class);
 		System.out.println(protoTypeBean2.getMyScope());
 
+		System.out.println("------------Config Props Bean-------------");
+		SFGConfig sfgConfig = ctx.getBean(SFGConfig.class);
+		System.out.println(sfgConfig.getUserName());
+		System.out.println(sfgConfig.getPassword());
+		System.out.println(sfgConfig.getJdbcUrl());
 
 	}
 }
