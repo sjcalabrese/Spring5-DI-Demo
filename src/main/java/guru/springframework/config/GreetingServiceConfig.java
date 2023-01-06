@@ -9,6 +9,7 @@ import guru.springframework.repository.EnglishGreetingRepositoryImpl;
 import guru.springframework.services.*;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
 
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.*;
     //this is configuration class and is used to define beans
 
 //Import resource allows the application to look for the xml file
+@EnableConfigurationProperties(ConstrictorConfig.class)
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
@@ -46,11 +48,11 @@ public class GreetingServiceConfig {
     }
     //use @Value annotation to pull properties in from PropertySource
     @Bean
-    FakeDataSource fakeDataSource(SFGConfig sfgConfig){
+    FakeDataSource fakeDataSource(ConstrictorConfig constrictorConfig){
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUserName(sfgConfig.getUserName());
-        fakeDataSource.setPassword(sfgConfig.getPassword());
-        fakeDataSource.setJdbcUrl(sfgConfig.getJdbcUrl());
+        fakeDataSource.setUserName(constrictorConfig.getUserName());
+        fakeDataSource.setPassword(constrictorConfig.getPassword());
+        fakeDataSource.setJdbcUrl(constrictorConfig.getJdbcUrl());
         return fakeDataSource;
     }
     @Bean
